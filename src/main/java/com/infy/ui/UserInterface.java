@@ -29,11 +29,14 @@ public class UserInterface {
 	}
 
 	public static void buyPolicy() throws Exception {
+		
 		Environment environment = null;
 		
 		try {
 			environment = ctx.getEnvironment();
+			
 			InsuranceServiceImpl insuranceServiceImpl = ctx.getBean(InsuranceServiceImpl.class);
+			
 			Policy policy = new Policy();
 			policy.setPolicyNumber("WL-553912");
 			policy.setPolicyHolderName("James");
@@ -43,9 +46,11 @@ public class UserInterface {
 			policy.setPremium(3500.0d);
 			policy.setTenureInMonths(180);
 			
-			String str1 = insuranceServiceImpl.buyPolicy(policy);
+			policy = insuranceServiceImpl.buyPolicy(policy);
+			
+			System.out.println("Policy has been bought");
 
-			System.out.println(environment.getProperty("UserInterface.SUCCESS") + "" + str1);
+//			System.out.println(environment.getProperty("UserInterface.SUCCESS") + "" + str1);
 
 		} catch (Exception e) {
 			String message = environment.getProperty(e.getMessage());
@@ -61,9 +66,9 @@ public class UserInterface {
 			environment = ctx.getEnvironment();
 
 			InsuranceServiceImpl insuranceServiceImpl = ctx.getBean(InsuranceServiceImpl.class);
-			List<PolicyReport> list1 = insuranceServiceImpl.getReport("Term Life Insurance");
+//			List<PolicyReport> list1 = insuranceServiceImpl.getReport("Term Life Insurance");
 			
-			// List<PolicyReport> list1=insuranceServiceImpl.getReport("CEOl-88");
+			List<PolicyReport> list1=insuranceServiceImpl.getReport("Whole Life Policy");
 			if (list1 != null) {
 				System.out.println(
 						"Policy Holder Name" + "\t" + "Policy Number" + "\t" + "Age(in months)" + "\t" + "Tenure");

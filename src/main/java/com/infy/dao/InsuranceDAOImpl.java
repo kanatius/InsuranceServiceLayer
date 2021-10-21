@@ -6,18 +6,15 @@ import java.util.List;
 
 import com.infy.model.Policy;
 
-public class InsuranceDAOImpl implements InsuranceDAO{
+public class InsuranceDAOImpl implements InsuranceDAO {
 
+	List<Policy> policies;
 
-	public String buyPolicy(Policy policy) throws Exception {
-		return policy.getPolicyNumber();
-	}
+	public InsuranceDAOImpl() {
 
+		this.policies = new ArrayList<Policy>();
 
-	public List<Policy> getAllPolicyDetails() throws Exception {
-		// TODO Auto-generated method stub
-		List<Policy> allPolicyDetails=new ArrayList<Policy>();
-		Policy policy1=new Policy();
+		Policy policy1 = new Policy();
 		policy1.setDateOfBirth(LocalDate.of(1989, 5, 10));
 		policy1.setPolicyHolderName("Maria");
 		policy1.setPolicyName("Retirement");
@@ -25,8 +22,8 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy1.setPolicyType("Term Life Insurance");
 		policy1.setPremium(5545.0d);
 		policy1.setTenureInMonths(300);
-		
-		Policy policy2=new Policy();
+
+		Policy policy2 = new Policy();
 		policy2.setDateOfBirth(LocalDate.of(1987, 11, 23));
 		policy2.setPolicyHolderName("Tom");
 		policy2.setPolicyName("Retirement");
@@ -34,7 +31,7 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy2.setPolicyType("Whole Life Policy");
 		policy2.setPremium(6330.0);
 		policy2.setTenureInMonths(300);
-		
+
 		Policy policy3 = new Policy();
 		policy3.setDateOfBirth(LocalDate.of(1999, 4, 10));
 		policy3.setPolicyHolderName("Pamela");
@@ -43,17 +40,17 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy3.setPolicyType("Whole Life Policy");
 		policy3.setPremium(3454.0);
 		policy3.setTenureInMonths(360);
-		
-		Policy policy4=new Policy();
-		policy4.setDateOfBirth(LocalDate.of(1975,10, 23));
+
+		Policy policy4 = new Policy();
+		policy4.setDateOfBirth(LocalDate.of(1975, 10, 23));
 		policy4.setPolicyHolderName("Roger");
 		policy4.setPolicyName("AccidentalCoverage");
 		policy4.setPolicyNumber("TL-552189");
 		policy4.setPolicyType("Term Life Insurance");
 		policy4.setPremium(7999.0);
 		policy4.setTenureInMonths(100);
-		
-		Policy policy5=new Policy();
+
+		Policy policy5 = new Policy();
 		policy5.setDateOfBirth(LocalDate.of(2007, 11, 7));
 		policy5.setPolicyHolderName("John M");
 		policy5.setPolicyName("AccidentalCoverage");
@@ -61,8 +58,8 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy5.setPolicyType("Term Life Insurance");
 		policy5.setPremium(973.0);
 		policy5.setTenureInMonths(420);
-		
-		Policy policy6=new Policy();
+
+		Policy policy6 = new Policy();
 		policy6.setDateOfBirth(LocalDate.of(2011, 1, 29));
 		policy6.setPolicyHolderName("Joey T");
 		policy6.setPolicyName("Retirement");
@@ -70,8 +67,8 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy6.setPolicyType("Whole Life Policy");
 		policy6.setPremium(554.0);
 		policy6.setTenureInMonths(420);
-		
-		Policy policy7=new Policy();
+
+		Policy policy7 = new Policy();
 		policy7.setDateOfBirth(LocalDate.of(1993, 12, 31));
 		policy7.setPolicyHolderName("Tim");
 		policy7.setPolicyName("Pension");
@@ -79,8 +76,8 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy7.setPolicyType("Whole Life Policy");
 		policy7.setPremium(2876.0);
 		policy7.setTenureInMonths(330);
-		
-		Policy policy8=new Policy();
+
+		Policy policy8 = new Policy();
 		policy8.setDateOfBirth(LocalDate.of(1983, 7, 1));
 		policy8.setPolicyHolderName("Alia");
 		policy8.setPolicyName("AccidentalCoverage");
@@ -88,8 +85,8 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy8.setPolicyType("Whole Life Policy");
 		policy8.setPremium(7887.0);
 		policy8.setTenureInMonths(252);
-		
-		Policy policy9=new Policy();
+
+		Policy policy9 = new Policy();
 		policy9.setDateOfBirth(LocalDate.of(1964, 1, 17));
 		policy9.setPolicyHolderName("Ranger");
 		policy9.setPolicyName("Retirement");
@@ -97,8 +94,8 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy9.setPolicyType("Whole Life Policy");
 		policy9.setPremium(9345.0);
 		policy9.setTenureInMonths(84);
-	
-		Policy policy10=new Policy();
+
+		Policy policy10 = new Policy();
 		policy10.setDateOfBirth(LocalDate.of(2014, 3, 10));
 		policy10.setPolicyHolderName("Peter");
 		policy10.setPolicyName("Retirement");
@@ -106,21 +103,27 @@ public class InsuranceDAOImpl implements InsuranceDAO{
 		policy10.setPolicyType("Whole Life Policy");
 		policy10.setPremium(432.0);
 		policy10.setTenureInMonths(240);
-		
-		
-		allPolicyDetails.add(policy1);
-		allPolicyDetails.add(policy2);
-		allPolicyDetails.add(policy3);
-		allPolicyDetails.add(policy4);
-		allPolicyDetails.add(policy5);
-		allPolicyDetails.add(policy6);
-		allPolicyDetails.add(policy7);
-		allPolicyDetails.add(policy8);
-		allPolicyDetails.add(policy9);
-		allPolicyDetails.add(policy10);
-		
-		return allPolicyDetails;
+
+		// inserting data when creating the DAO obj
+		this.policies.add(policy1);
+		this.policies.add(policy2);
+		this.policies.add(policy3);
+		this.policies.add(policy4);
+		this.policies.add(policy5);
+		this.policies.add(policy6);
+		this.policies.add(policy7);
+		this.policies.add(policy8);
+		this.policies.add(policy9);
+		this.policies.add(policy10);
 	}
 
-	
+	public Policy buyPolicy(Policy policy) {
+		this.policies.add(policy);
+		return policy;
+	}
+
+	public List<Policy> getAllPolicies() {
+		return this.policies;
+	}
+
 }

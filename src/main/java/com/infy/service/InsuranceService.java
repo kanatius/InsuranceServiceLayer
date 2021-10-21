@@ -8,9 +8,9 @@ import com.infy.model.PolicyReport;
 
 public interface InsuranceService {
 	
-	public String buyPolicy(Policy policy) throws Exception;
-	public Long calculateAge(LocalDate dateOfBirth) throws Exception;
-	public List<PolicyReport> getReport(String insuranceType) throws Exception;
+	public Policy buyPolicy(Policy policy);
+	public Integer calculateAge(LocalDate dateOfBirth);
+	public List<PolicyReport> getReport(String insuranceType);
 	
 
 }

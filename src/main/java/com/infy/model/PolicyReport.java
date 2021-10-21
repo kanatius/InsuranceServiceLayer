@@ -1,14 +1,23 @@
 package com.infy.model;
 
 public class PolicyReport {
-	private Integer policyNumber;
+	
+	private String policyNumber;
 	private String policyHolderName;
-	private Double policyHolderAge;
+	private Integer policyHolderAge;
 	private Integer tenureInMonths;
-	public Integer getPolicyNumber() {
+	
+	public PolicyReport(Policy policy, Integer age) {
+		this.policyNumber = policy.getPolicyNumber();
+		this.policyHolderName = policy.getPolicyHolderName();
+		this.policyHolderAge = age;
+		this.tenureInMonths = policy.getTenureInMonths();
+	}
+	
+	public String getPolicyNumber() {
 		return policyNumber;
 	}
-	public void setPolicyNumber(Integer policyNumber) {
+	public void setPolicyNumber(String policyNumber) {
 		this.policyNumber = policyNumber;
 	}
 	public String getPolicyHolderName() {
@@ -17,10 +26,10 @@ public class PolicyReport {
 	public void setPolicyHolderName(String policyHolderName) {
 		this.policyHolderName = policyHolderName;
 	}
-	public Double getPolicyHolderAge() {
+	public Integer getPolicyHolderAge() {
 		return policyHolderAge;
 	}
-	public void setPolicyHolderAge(Double policyHolderAge) {
+	public void setPolicyHolderAge(Integer policyHolderAge) {
 		this.policyHolderAge = policyHolderAge;
 	}
 	public Integer getTenureInMonths() {
